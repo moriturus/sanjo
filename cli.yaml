@@ -1,0 +1,75 @@
+name: sanjo
+author: Henrique Sasaki Yuya <moriturus@alimensir.com>
+version: "1.0.0"
+abount: A tiny Image Processing Application.
+args:
+  - input:
+      short: i
+      long: input
+      value_name: INPUT
+      help: Sets input image file.
+      takes_value: true
+      required: true
+  - output:
+      short: o
+      long: output
+      value_name: OUTPUT
+      help: Sets output image file.
+      takes_value: true
+      required: true
+
+  - resize:
+      short: r
+      long: resize
+      value_name: WIDTHxHEIGHT
+      takes_value: true
+      help: Sets the dimensions to use for resizing.
+      conflicts_with: resize_keep
+  - resize_keep:
+      short: k
+      long: resize-keep-aspect-ratio
+      value_name: WIDTH
+      takes_value: true
+      help: Sets the width to use for resizing keeping image's aspect ratio.
+      conflicts_with: resize
+
+  - color:
+      short: c
+      long: color
+      value_name: "#RGB_OR_RGBA_HEX_CODE"
+      takes_value: true
+      help: Sets the text color to draw.
+  - shadow_color:
+      short: s
+      long: shadow-color
+      value_name: "#RGB_OR_RGBA_HEX_CODE"
+      takes_value: true
+      help: Sets the text shadow color to draw.
+  - grayscale:
+      short: g
+      long: grayscale
+      takes_value: false
+      help: Sets grayscale image mode.
+  - font:
+      short: f
+      long: font
+      value_name: PATH_TO_FONT
+      takes_value: true
+      help: Sets the font file path to draw a text.
+  - font_height:
+      short: h
+      long: font-height
+      value_name: FONT_HEIGHT
+      takes_value: true
+      help: Sets the font height.
+  - position:
+      short: p
+      long: position
+      value_name: X_POSITIONxY_POSITION
+      takes_value: true
+      conflicts_with: gravity
+      help: Sets the text position. Conflicts with `--gravity` option.
+  - verbose:
+      short: v
+      multiple: true
+      help: Sets the level of verbosity
