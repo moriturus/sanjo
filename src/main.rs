@@ -214,7 +214,7 @@ where
         .into_iter()
         .fold(image, |mut accm, (l, scale, textbox)| {
             if let Some(shadow_color) = options.shadow_color {
-                let mut m = imageproc::drawing::draw_text(
+                imageproc::drawing::draw_text_mut(
                     &mut accm,
                     shadow_color.into(),
                     textbox.0.max(0) as u32 + 2,
@@ -223,15 +223,43 @@ where
                     &font,
                     &l,
                 );
-                imageproc::drawing::draw_text(
-                    &mut m,
+                imageproc::drawing::draw_text_mut(
+                    &mut accm,
+                    shadow_color.into(),
+                    (textbox.0.max(0) as u32).saturating_sub(2),
+                    textbox.1.max(0) as u32 + 2,
+                    scale,
+                    &font,
+                    &l,
+                );
+                imageproc::drawing::draw_text_mut(
+                    &mut accm,
+                    shadow_color.into(),
+                    (textbox.0.max(0) as u32).saturating_sub(2),
+                    (textbox.1.max(0) as u32).saturating_sub(2),
+                    scale,
+                    &font,
+                    &l,
+                );
+                imageproc::drawing::draw_text_mut(
+                    &mut accm,
+                    shadow_color.into(),
+                    textbox.0.max(0) as u32 + 2,
+                    (textbox.1.max(0) as u32).saturating_sub(2),
+                    scale,
+                    &font,
+                    &l,
+                );
+                imageproc::drawing::draw_text_mut(
+                    &mut accm,
                     options.color.into(),
                     textbox.0.max(0) as u32,
                     textbox.1.max(0) as u32,
                     scale,
                     &font,
                     &l,
-                )
+                );
+                accm
             } else {
                 imageproc::drawing::draw_text(
                     &mut accm,
@@ -285,7 +313,7 @@ where
         .into_iter()
         .fold(image, |mut accm, (l, scale, textbox)| {
             if options.shadow_color.is_some() {
-                let mut m = imageproc::drawing::draw_text(
+                imageproc::drawing::draw_text_mut(
                     &mut accm,
                     image::LumaA([255, 255]),
                     textbox.0.max(0) as u32 + 2,
@@ -294,15 +322,43 @@ where
                     &font,
                     &l,
                 );
-                imageproc::drawing::draw_text(
-                    &mut m,
+                imageproc::drawing::draw_text_mut(
+                    &mut accm,
+                    image::LumaA([255, 255]),
+                    (textbox.0.max(0) as u32).saturating_sub(2),
+                    textbox.1.max(0) as u32 + 2,
+                    scale,
+                    &font,
+                    &l,
+                );
+                imageproc::drawing::draw_text_mut(
+                    &mut accm,
+                    image::LumaA([255, 255]),
+                    (textbox.0.max(0) as u32).saturating_sub(2),
+                    (textbox.1.max(0) as u32).saturating_sub(2),
+                    scale,
+                    &font,
+                    &l,
+                );
+                imageproc::drawing::draw_text_mut(
+                    &mut accm,
+                    image::LumaA([255, 255]),
+                    textbox.0.max(0) as u32 + 2,
+                    (textbox.1.max(0) as u32).saturating_sub(2),
+                    scale,
+                    &font,
+                    &l,
+                );
+                imageproc::drawing::draw_text_mut(
+                    &mut accm,
                     image::LumaA([0, 255]),
                     textbox.0.max(0) as u32,
                     textbox.1.max(0) as u32,
                     scale,
                     &font,
                     &l,
-                )
+                );
+                accm
             } else {
                 imageproc::drawing::draw_text(
                     &mut accm,
