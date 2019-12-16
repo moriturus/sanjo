@@ -1,6 +1,6 @@
 [package]
 name = "sanjo"
-version = "1.0.0"
+version = "1.1.0"
 authors = ["Henrique Sasaki Yuya <moriturus@alimensir.com>"]
 edition = "2018"
 license = "MIT"
@@ -8,7 +8,7 @@ description = "A tiny *Image Processing Application* aims at simple to use."
 repository = "https://github.com/moriturus/sanjo"
 readme = "README.md"
 keywords = ["image", "graphics"]
-categories = ["Graphics"]
+categories = ["graphics"]
 documentation = "https://docs.rs/sanjo"
 
 [dependencies]
